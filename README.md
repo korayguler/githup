@@ -21,3 +21,9 @@ npm run build
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### TODO
+
+- [ ] search.vue cssi düzenle
+- [ ] mobil componentlere parçala
+- [ ] stateleri vuex store taşı

@@ -69,13 +69,16 @@
         >
           <h5 class="content-repos-item-name">{{ repo.name }}</h5>
 
-          <span class="content-repos-item-lang"
+          <span v-if="repo.language" class="content-repos-item-lang"
             >language: {{ repo.language }}</span
           >
           <span class="content-repos-item-size">size: {{ repo.size }} KB</span>
           <span class="content-repos-item-watchers">
             watchers: {{ repo.watchers }}
           </span>
+          <span v-if="repo.forks" class="content-repos-item-license"
+            >forks: {{ repo.forks }}</span
+          >
           <span v-if="repo.license" class="content-repos-item-license"
             >licence: {{ repo.license.key }}</span
           >
@@ -112,6 +115,7 @@ export default {
           if (data.status === 200) this.github_userdata = data.data;
         })
         .catch((err) => {
+          this.$router.push('/');
           console.log(err);
         });
 
@@ -172,10 +176,13 @@ export default {
       font-size: 14px;
       .company {
         font-weight: bold;
+        margin-top: 15px;
       }
     }
     &-username {
       color: #222;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
     &-stats {
       &-follow {
@@ -226,15 +233,18 @@ export default {
   padding: 15px;
   margin-left: 250px;
   &-repos {
+    grid-gap: 15px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
-    height: 140px;
+    flex-wrap: wrap;
     &-item {
       border: 1px solid black;
       padding: 15px;
       background: #fff;
       transition: 250ms;
+      height: 110px;
+      text-decoration: none;
+      color: inherit;
       &:hover {
         transform: scale(1.2);
         z-index: 4;
@@ -248,6 +258,7 @@ export default {
       h5 {
         color: #222;
         transition: 250ms;
+        margin-bottom: 6px;
       }
       span {
         display: block;
