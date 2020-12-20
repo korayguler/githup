@@ -1,7 +1,8 @@
 <template>
+  <router-link to="/homepage">link</router-link>
+  <router-link to="/projects">link</router-link>
   <router-view />
 </template>
-
 <style>
 *,
 *:before,

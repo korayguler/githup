@@ -35,7 +35,7 @@ export default {
   padding: 15px;
   background: #fff;
   transition: 250ms all;
-  height: 110px;
+  min-height: 110px;
   text-decoration: none;
   color: inherit;
   border-radius: 10px;
