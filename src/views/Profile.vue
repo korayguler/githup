@@ -22,9 +22,6 @@ export default {
       github_repos: [],
     };
   },
-  computed: {
-    routeVal() {},
-  },
   methods: {},
   created() {
     if (!this.username) return;
