@@ -1,13 +1,13 @@
-# gitprof
+# GITHUP
 
 ## Clone this repo
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/korayguler/gitprof
+$ git clone https://github.com/korayguler/githup
 
 # Go into the repository
-$ cd gitprof
+$ cd githup
 ```
 
 ## Project setup
@@ -19,7 +19,7 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
