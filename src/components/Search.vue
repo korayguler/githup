@@ -1,13 +1,13 @@
 <template>
   <span class="logo">
-    <img src="images/steroidtocat.png" alt="" />
+    <img src="images/Fintechtocat.png" alt="" />
   </span>
   <div class="search">
     <input
       class="prompt search-input"
       type="text"
       v-model="usernameInput"
-      placeholder="github-username"
+      placeholder="@username"
       @keydown.enter="
         $router.push(
           `/${usernameInput
@@ -36,23 +36,23 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 700px;
-
+  height: 100vh;
+  transform-origin: center;
   img {
     height: 100%;
     width: auto;
 
-    animation: scale 4s infinite alternate-reverse;
+    animation: rotate 12s infinite alternate-reverse;
   }
 }
 
-@keyframes scale {
+@keyframes rotate {
   from {
-    transform: scale(1);
+    transform: rotate(-90deg);
   }
 
   to {
-    transform: scale(1.2);
+    transform: rotate(90deg);
   }
 }
 
@@ -61,7 +61,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 250px;
@@ -73,14 +73,18 @@ export default {
     width: 100%;
     height: 50px;
     font-size: 20px;
-    padding-left: 15px;
-    font-weight: 600;
-    color: #333;
+    padding-left: 20px;
+    font-weight: 100;
+    color: #222;
     outline: none;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.5);
+
+    &::placeholder {
+      color: #222;
+    }
   }
 }
 </style>

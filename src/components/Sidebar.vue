@@ -40,16 +40,14 @@
         <p class="text" v-if="github_userdata.bio">
           {{ github_userdata.bio }}
         </p>
-        <p class="company" v-if="github_userdata.company">
-          @{{ github_userdata.company }}
-        </p>
+        <p class="company" v-if="github_userdata.company">{{ company }}</p>
       </div>
       <div class="sidebar-profile-date">
         <div class="created_at">
-          updated at <i>{{ github_userdata.updated_at.substr(0, 10) }}</i>
+          updated at <i>{{ github_userdata.updated_at?.substr(0, 10) }}</i>
         </div>
         <div class="created_at">
-          created at <i>{{ github_userdata.created_at.substr(0, 10) }}</i>
+          created at <i>{{ github_userdata.created_at?.substr(0, 10) }}</i>
         </div>
       </div>
     </div>
@@ -59,6 +57,15 @@
 <script>
 export default {
   props: ['github_userdata'],
+  computed: {
+    company() {
+      if (this.github_userdata.company?.toString().includes('@', 0)) {
+        return this.github_userdata.company?.toString();
+      } else {
+        return `@${this.github_userdata.company?.toString()}`;
+      }
+    },
+  },
 };
 </script>
 
@@ -70,7 +77,7 @@ export default {
   height: 100vh;
   width: 250px;
   box-shadow: 1px 0 10px rgba(black, 0.2);
-  overflow: scroll;
+  overflow-y: scroll;
 
   @media only screen and (max-width: 800px) {
     position: static;
@@ -86,6 +93,10 @@ export default {
       width: 100%;
       height: 100%;
       overflow: hidden;
+      transition: 300ms all;
+      &:hover {
+        transform: scale(1.03);
+      }
       img {
         width: 100%;
         height: auto;
@@ -106,6 +117,16 @@ export default {
       margin-bottom: 15px;
     }
     &-stats {
+      .followers,
+      .following,
+      .repos,
+      .gists {
+        transition: 300ms all;
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
       &-follow {
         display: flex;
         .followers,
