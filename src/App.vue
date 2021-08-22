@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <div class="main">
+    <router-link to="/" class="go-back-button">
+      <a>go back</a>
+    </router-link>
     <div class="layout">
       <router-view />
     </div>
   </div>
 </template>
 
-<style>
+<style lang="scss">
 *,
 *:before,
 *:after {
@@ -33,5 +36,18 @@ body {
 }
 #app {
   height: 100vh;
+
+  .main {
+    .go-back-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #222222;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #fff;
+    }
+  }
 }
 </style>
