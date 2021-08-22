@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="profile-page"
-    v-if="github_userdata && github_repos && !isLoading"
-  >
-    <Sidebar :github_userdata="github_userdata" />
-    <Repos :github_repos="github_repos" />
+  <div class="profile-page" v-if="!isLoading">
+    <Sidebar :githubUserData="githubUserData" />
+    <Repos :githubRepos="githubRepos" />
   </div>
 
   <div class="loading-animation" v-if="isLoading">
     <div class="loading-animation-container"><h1>Loading...</h1></div>
   </div>
-  <page-title :title="`${this.$route.params.username} | githup`" />
+  <page-title :title="`<${this.$route.params.username}/>`" />
 </template>
 
 <script>
@@ -24,38 +21,43 @@ export default {
   data() {
     return {
       username: this.$route.params.username,
-      github_userdata: {},
-      github_repos: [],
-      isLoading: true,
+      githubUserData: {},
+      githubRepos: [],
+      userIsLoading: true,
+      reposIsLoading: true,
     };
   },
-  methods: {},
+  computed: {
+    isLoading() {
+      if (!this.userIsLoading && !this.reposIsLoading) return false;
+      else return true;
+    },
+  },
   mounted() {
     if (!this.username) {
       router.push('/');
-    } else {
-      axios
-        .get(`https://api.github.com/users/${this.username}`)
-        .then((data) => {
-          if (data.status === 200) this.github_userdata = data.data;
-          this.isLoading = false;
-        })
-        .catch((err) => {
-          this.$router.push('/');
-          console.log(err);
-        });
-      axios
-        .get(`https://api.github.com/users/${this.username}/repos`)
-        .then((data) => {
-          if (data.status === 200) {
-            this.github_repos = data.data;
-            console.log(data.data);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      return;
     }
+    axios
+      .get(`https://api.github.com/users/${this.username}`)
+      .then((data) => {
+        if (data.status === 200) {
+          this.githubUserData = data.data;
+          this.userIsLoading = false;
+        }
+      })
+      .catch(() => this.$router.push('/'));
+
+    axios
+      .get(
+        `https://api.github.com/users/${this.username}/repos?page=1&per_page=100`,
+      )
+      .then((data) => {
+        if (data.status === 200) {
+          this.githubRepos = data.data;
+          this.reposIsLoading = false;
+        }
+      });
   },
 };
 </script>
