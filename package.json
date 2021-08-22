@@ -1,26 +1,27 @@
 {
-  "name": "gitprof",
+  "name": "githup",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.9.0",
-    "vue": "^3.0.6",
-    "vue-router": "^4.0.4",
-    "vuex": "^4.0.0"
+    "core-js": "^3.16.2",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.11",
-    "@vue/cli-plugin-router": "^4.5.11",
-    "@vue/cli-plugin-vuex": "^4.5.11",
-    "@vue/cli-service": "^4.5.11",
-    "@vue/compiler-sfc": "^3.0.6",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.2"
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-plugin-vuex": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "@vue/compiler-sfc": "^3.2.4",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^12.1.0"
   },
   "browserslist": [
     "> 1%",
