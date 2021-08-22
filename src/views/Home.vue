@@ -2,7 +2,7 @@
   <div class="home">
     <Search />
   </div>
-  <page-title :title="`type username | githup`" />
+  <page-title :title="`Githup · type @username`" />
   <div class="animating-bg"></div>
 </template>
 
