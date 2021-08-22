@@ -3,51 +3,48 @@
     <!--SIDEBAR-->
     <div class="sidebar-profile">
       <div class="sidebar-profile-image">
-        <img
-          :src="github_userdata.avatar_url"
-          :alt="github_userdata.username"
-        />
+        <img :src="githubUserData.avatar_url" :alt="githubUserData.username" />
       </div>
       <h2 class="sidebar-profile-username">
-        {{ `${github_userdata.login}` }}
+        {{ `${githubUserData.login}` }}
       </h2>
 
       <div class="sidebar-profile-stats">
         <div class="sidebar-profile-stats-follow">
           <span class="followers"
             >Followers
-            <span class="count">{{ github_userdata.followers }}</span></span
+            <span class="count">{{ githubUserData.followers }}</span></span
           >
           <span class="following"
             >Following
-            <span class="count">{{ github_userdata.following }}</span></span
+            <span class="count">{{ githubUserData.following }}</span></span
           >
         </div>
 
         <div class="sidebar-profile-stats-repos">
           <span class="repos"
             >Public Repos<span class="count">{{
-              github_userdata.public_repos
+              githubUserData.public_repos
             }}</span></span
           >
           <span class="gists"
             >Public Gists
-            <span class="count">{{ github_userdata.public_gists }}</span></span
+            <span class="count">{{ githubUserData.public_gists }}</span></span
           >
         </div>
       </div>
       <div class="sidebar-profile-bio">
-        <p class="text" v-if="github_userdata.bio">
-          {{ github_userdata.bio }}
+        <p class="text" v-if="githubUserData.bio">
+          {{ githubUserData.bio }}
         </p>
-        <p class="company" v-if="github_userdata.company">{{ company }}</p>
+        <p class="company" v-if="githubUserData.company">{{ company }}</p>
       </div>
       <div class="sidebar-profile-date">
         <div class="created_at">
-          updated at <i>{{ github_userdata.updated_at?.substr(0, 10) }}</i>
+          updated at <i>{{ githubUserData.updated_at?.substr(0, 10) }}</i>
         </div>
         <div class="created_at">
-          created at <i>{{ github_userdata.created_at?.substr(0, 10) }}</i>
+          created at <i>{{ githubUserData.created_at?.substr(0, 10) }}</i>
         </div>
       </div>
     </div>
@@ -56,13 +53,13 @@
 
 <script>
 export default {
-  props: ['github_userdata'],
+  props: ['githubUserData'],
   computed: {
     company() {
-      if (this.github_userdata.company?.toString().includes('@', 0)) {
-        return this.github_userdata.company?.toString();
+      if (this.githubUserData.company?.toString().includes('@', 0)) {
+        return this.githubUserData.company?.toString();
       } else {
-        return `@${this.github_userdata.company?.toString()}`;
+        return `@${this.githubUserData.company?.toString()}`;
       }
     },
   },

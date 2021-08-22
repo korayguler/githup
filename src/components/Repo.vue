@@ -1,6 +1,6 @@
 <template>
   <a
-    v-for="repo in github_repos"
+    v-for="repo in githubRepos"
     :key="repo.id"
     class="content-repos-item"
     target="_blank"
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props: ['github_repos'],
+  props: ['githubRepos'],
 };
 </script>
 

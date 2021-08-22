@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="content-repos">
-      <Repo :github_repos="github_repos" />
+      <Repo :githubRepos="githubRepos" />
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 import Repo from '@/components/Repo';
 export default {
   components: { Repo },
-  props: ['github_repos'],
+  props: ['githubRepos'],
 };
 </script>
 
